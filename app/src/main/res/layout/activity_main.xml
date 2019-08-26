@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <data>
-
-        <variable
-            name="handlers"
-            type="omari.hamza.espresso.Handlers" />
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
 
         <Button
             android:id="@+id/nextButton"
@@ -24,8 +26,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Next"
             android:onClick="@{() -> handlers.launchNextActivity()}"
+            android:text="Next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/messageEditText" />
@@ -38,20 +40,47 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Message"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nextButton"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hallo!"
-            style="@style/TextAppearance.AppCompat.Display4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="phone"
+            app:layout_constraintEnd_toStartOf="@+id/nextButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:entries="@{entries}"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/phoneEditText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="handlers"
+            type="omari.hamza.espresso.Handlers" />
+
+        <variable
+            name="entries"
+            type="String[]" />
+    </data>
 
 </layout>
